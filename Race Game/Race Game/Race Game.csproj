@@ -82,9 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\sound\" />
+    <Folder Include="resources\sprites\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\sprites\pijl.png" />
+    <Content Include="pijl.png" />
+    <Content Include="pijl_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,17 @@ namespace Race_Game
             this.downKey = downKey;
             this.image = image;
         }
-
-        public Car()
+        //Geters
+        public Point getPosition()
         {
+            return position;
         }
+
+        public Image getImage()
+        {
+            return image;
+        }
+
+
     }
 }
