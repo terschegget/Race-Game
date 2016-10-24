@@ -1,2 +1,10 @@
 C:\Users\twant\OneDrive\Documenten\Visual Studio 2015\Projects\Race Game\Race Game\bin\Debug\Race Game.exe.config
 C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe.config
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.pdb
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csprojResolveAssemblyReference.cache
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.FormRaceGame.resources
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.Properties.Resources.resources
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csproj.GenerateResource.Cache
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.exe
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.pdb
