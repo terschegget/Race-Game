@@ -28,20 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.timerGameTicks = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // Form1
+            // timerGameTicks
+            // 
+            this.timerGameTicks.Enabled = true;
+            this.timerGameTicks.Interval = 1;
+            this.timerGameTicks.Tick += new System.EventHandler(this.timerGameTicks_Tick);
+            // 
+            // FormRaceGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1459, 667);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1459, 648);
+            this.Name = "FormRaceGame";
+            this.Text = "Race ame";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        
+        private System.Windows.Forms.Timer timerGameTicks;
     }
 }
 

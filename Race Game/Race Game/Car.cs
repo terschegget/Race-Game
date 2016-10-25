@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Race_Game
@@ -15,6 +13,7 @@ namespace Race_Game
         private float rotation;
         private double speed;
         private Keys leftKey, rightKey, upKey, downKey;
+        private bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
         private Image image;
 
         public Car(int positionX, int positionY, float rotation, double speed, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, Image image)
@@ -28,7 +27,31 @@ namespace Race_Game
             this.downKey = downKey;
             this.image = image;
         }
-        //Geters
+
+        public void handleKeyDownEvent(KeyEventArgs keys)
+        {
+            if (leftKey == keys.KeyCode)
+                leftPressed = true;
+            if (rightKey == keys.KeyCode)
+                rightPressed = true;
+            if (upKey == keys.KeyCode)
+                upPressed = true;
+            if (downKey == keys.KeyCode)
+                downPressed = true;
+        }
+
+        public void handleKeyUpEvent(KeyEventArgs keys)
+        {
+            if (leftKey == keys.KeyCode)
+                leftPressed = false;
+            if (rightKey == keys.KeyCode)
+                rightPressed = false;
+            if (upKey == keys.KeyCode)
+                upPressed = false;
+            if (downKey == keys.KeyCode)
+                downPressed = false;
+        }
+
         public Point getPosition()
         {
             return position;
@@ -39,6 +62,67 @@ namespace Race_Game
             return image;
         }
 
+        private void accelerate()
+        {
+            speed = speed + .1;
 
+            if (speed >= 5.0)
+                speed = 5.0;
+        }
+
+        private void brake()
+        {
+            speed = speed - .1;
+
+            if (speed <= -2.0)
+                speed = -2.0;
+        }
+
+        private void coast()
+        {
+            if (speed >= .02)
+                speed -= .05;
+            else if (speed <= -.02)
+                speed += 0.05;
+            else
+                speed = 0;
+        }
+
+        private void rotateRight()
+        {
+            if (speed != 0)
+                this.rotation += .07f;
+        }
+
+        private void rotateLeft()
+        {
+            if (speed != 0)
+                this.rotation -= .07f;
+        }
+
+        private void changeSpeed()
+        {
+            if (upPressed)
+                accelerate();
+            else if (downPressed)
+                brake();
+            else
+                coast();
+
+            if (leftPressed)
+                rotateLeft();
+            else if (rightPressed)
+                rotateRight();
+        }
+
+        /// <summary>
+        /// Calculates the new position for the car
+        /// </summary>
+        public void calculateNewPosition()
+        {
+            changeSpeed();
+            position.X += (int)Math.Round(speed * Math.Cos(rotation)); //pure magic here!
+            position.Y += (int)Math.Round(speed * Math.Sin(rotation)); //more magic here
+        }
     }
 }

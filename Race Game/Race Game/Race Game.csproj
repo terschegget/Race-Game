@@ -85,8 +85,12 @@
     <Folder Include="resources\sprites\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pijl.png" />
-    <Content Include="pijl_2.png" />
+    <Content Include="pijl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pijl_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
