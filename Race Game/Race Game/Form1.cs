@@ -20,7 +20,7 @@ namespace Race_Game
         {
             InitializeComponent();
 
-            Car car1 = new Car(30, 30, 0, 0, Keys.Left, Keys.Right, Keys.Up, Keys.Down, new Bitmap(Path.Combine(Environment.CurrentDirectory, "pijl_2.png")));
+            Car car1 = new Car(16, 16, 0, 0, Keys.Left, Keys.Right, Keys.Up, Keys.Down, new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/pijl_2.png")));
 
             cars.Add(car1);
             
@@ -61,17 +61,24 @@ namespace Race_Game
 
             Backbuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
         }
-
-
-
+        
         void Draw(Graphics g) {
             foreach (Car car in cars)
+            {
+                
+                g.TranslateTransform(car.getPosition().X + 16, car.getPosition().Y + 16);
+                g.RotateTransform(car.getRotation() * (float)(180.0 / Math.PI) + 90);
+                g.TranslateTransform(-car.getPosition().X - 16, -car.getPosition().Y - 16);
+
                 g.DrawImage(car.getImage(), car.getPosition());
+            }
         }
 
         private void timerGameTicks_Tick(object sender, EventArgs e) {
             foreach (Car car in cars)
+            {
                 car.calculateNewPosition();
+            }
 
             Invalidate();
         }

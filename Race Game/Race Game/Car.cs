@@ -62,6 +62,16 @@ namespace Race_Game
             return image;
         }
 
+        public float getRotation()
+        {
+            return rotation;
+        }
+
+        public double getSpeed()
+        {
+            return speed;
+        }
+
         private void accelerate()
         {
             speed = speed + .1;
@@ -114,10 +124,8 @@ namespace Race_Game
             else if (rightPressed)
                 rotateRight();
         }
-
-        /// <summary>
-        /// Calculates the new position for the car
-        /// </summary>
+        
+        // Calculates the new position for the car
         public void calculateNewPosition()
         {
             changeSpeed();
