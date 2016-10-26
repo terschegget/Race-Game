@@ -31,7 +31,9 @@ namespace Race_Game
 
             this.ResizeEnd += new EventHandler(Form1_CreateBackBuffer);
             this.Load += new EventHandler(Form1_CreateBackBuffer);
+            this.Paint += new PaintEventHandler(Form1_PaintUI);
             this.Paint += new PaintEventHandler(Form1_Paint);
+            
 
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyUp += new KeyEventHandler(Form1_KeyUp);
@@ -52,17 +54,23 @@ namespace Race_Game
                 e.Graphics.DrawImageUnscaled(Backbuffer, Point.Empty);
             }
 
-            Draw(e.Graphics);
+            DrawCar(e.Graphics);
+            
+        }
+        void Form1_PaintUI(object sender, PaintEventArgs e)
+        {
+            SolidBrush brush = new SolidBrush(System.Drawing.Color.Aqua);
+            e.Graphics.FillRectangle(brush, 0, ClientSize.Height - 96, ClientSize.Width, 96);
         }
 
-        void Form1_CreateBackBuffer(object sender, EventArgs e) {
+         void Form1_CreateBackBuffer(object sender, EventArgs e) {
             if (Backbuffer != null)
                 Backbuffer.Dispose();
 
             Backbuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
         }
         
-        void Draw(Graphics g) {
+        void DrawCar(Graphics g) {
             foreach (Car car in cars)
             {
                 g.TranslateTransform(car.getPosition().X + 16, car.getPosition().Y + 16);
@@ -71,8 +79,9 @@ namespace Race_Game
 
                 g.DrawImage(car.getImage(), car.getPosition());
             }
+            
         }
-
+        
         private void timerGameTicks_Tick(object sender, EventArgs e) {
             foreach (Car car in cars)
             {
