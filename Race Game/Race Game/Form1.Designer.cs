@@ -1,6 +1,6 @@
 ﻿namespace Race_Game
 {
-    partial class Form1
+    partial class FormRaceGame
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.timerGameTicks = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // timerGameTicks
+            // 
+            this.timerGameTicks.Enabled = true;
+            this.timerGameTicks.Interval = 1;
+            this.timerGameTicks.Tick += new System.EventHandler(this.timerGameTicks_Tick);
+            // 
+            // FormRaceGame
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.MaximumSize = new System.Drawing.Size(1024, 768);
+            this.Name = "FormRaceGame";
+            this.Text = "Race ame";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        
+        private System.Windows.Forms.Timer timerGameTicks;
     }
 }
 
