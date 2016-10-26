@@ -20,7 +20,7 @@ namespace Race_Game
         {
             InitializeComponent();
 
-            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "pijl.png");
+            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "redcar.png");
             
             cars.Add(car1);
 
