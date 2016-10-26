@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Race_Game
 {
@@ -14,12 +15,15 @@ namespace Race_Game
         private double speed;
         private Keys leftKey, rightKey, upKey, downKey;
         private bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
-        private Image image;
+        private String image;
+        private float tank;
 
-        public Car(int positionX, int positionY, float rotation, double speed, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, Image image)
+        public Car(int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
         {
             position.X = positionX;
             position.Y = positionY;
+            this.speed = speed;
+            this.tank = tank;
             this.rotation = rotation;
             this.leftKey = leftKey;
             this.rightKey = rightKey;
@@ -59,7 +63,7 @@ namespace Race_Game
 
         public Image getImage()
         {
-            return image;
+            return new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/" + image));
         }
 
         public float getRotation()
@@ -78,6 +82,7 @@ namespace Race_Game
 
             if (speed >= 5.0)
                 speed = 5.0;
+            emtyTank();
         }
 
         private void brake()
@@ -86,6 +91,7 @@ namespace Race_Game
 
             if (speed <= -2.0)
                 speed = -2.0;
+            emtyTank();
         }
 
         private void coast()
@@ -96,6 +102,14 @@ namespace Race_Game
                 speed += 0.05;
             else
                 speed = 0;
+        }
+
+        private void emtyTank()
+        {
+            if(speed < 0)
+                tank += (float)Math.Sin(0.1f * Math.PI * speed);
+            if(speed > 0)
+                tank -= (float)Math.Sin(0.1f * Math.PI * speed);
         }
 
         private void rotateRight()
@@ -112,9 +126,9 @@ namespace Race_Game
 
         private void changeSpeed()
         {
-            if (upPressed)
+            if (upPressed && tank > 0)
                 accelerate();
-            else if (downPressed)
+            else if (downPressed && tank > 0)
                 brake();
             else
                 coast();
@@ -124,11 +138,14 @@ namespace Race_Game
             else if (rightPressed)
                 rotateRight();
         }
-        
+
         // Calculates the new position for the car
         public void calculateNewPosition()
         {
             changeSpeed();
+
+            Console.WriteLine(tank);
+
             position.X += (int)Math.Round(speed * Math.Cos(rotation)); //pure magic here!
             position.Y += (int)Math.Round(speed * Math.Sin(rotation)); //more magic here
         }

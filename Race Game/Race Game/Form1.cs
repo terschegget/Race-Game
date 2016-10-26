@@ -20,10 +20,10 @@ namespace Race_Game
         {
             InitializeComponent();
 
-            Car car1 = new Car(16, 16, 0, 0, Keys.Left, Keys.Right, Keys.Up, Keys.Down, new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/pijl_2.png")));
-
-            cars.Add(car1);
+            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "pijl.png");
             
+            cars.Add(car1);
+
             this.SetStyle(
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint |
@@ -65,7 +65,6 @@ namespace Race_Game
         void Draw(Graphics g) {
             foreach (Car car in cars)
             {
-                
                 g.TranslateTransform(car.getPosition().X + 16, car.getPosition().Y + 16);
                 g.RotateTransform(car.getRotation() * (float)(180.0 / Math.PI) + 90);
                 g.TranslateTransform(-car.getPosition().X - 16, -car.getPosition().Y - 16);
