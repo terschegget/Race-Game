@@ -23,3 +23,5 @@ C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Ga
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.FormRaceGame.resources
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.Properties.Resources.resources
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csproj.GenerateResource.Cache
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\blueCar.png
+C:\Users\twant\OneDrive\Documenten\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redCar.png

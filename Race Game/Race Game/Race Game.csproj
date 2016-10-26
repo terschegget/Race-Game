@@ -84,7 +84,7 @@
     <Folder Include="resources\sound\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\sprites\bluecar.png">
+    <Content Include="resources\sprites\blueCar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\sprites\pijl_2.png">
@@ -93,7 +93,7 @@
     <Content Include="resources\sprites\pijl.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\redcar.png">
+    <Content Include="resources\sprites\redCar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
