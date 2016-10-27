@@ -20,7 +20,7 @@ namespace Race_Game
         {
             InitializeComponent();
 
-            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "pijl.png");
+            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
             
             cars.Add(car1);
 
@@ -31,6 +31,7 @@ namespace Race_Game
 
             this.ResizeEnd += new EventHandler(Form1_CreateBackBuffer);
             this.Load += new EventHandler(Form1_CreateBackBuffer);
+            this.Paint += new PaintEventHandler(Form1_PaintUI);
             this.Paint += new PaintEventHandler(Form1_Paint);
 
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
@@ -54,8 +55,14 @@ namespace Race_Game
 
             Draw(e.Graphics);
         }
+        void Form1_PaintUI(object sender, PaintEventArgs e)
+        {
+            SolidBrush blueBrush = new SolidBrush(Color.Blue);
+            Rectangle rect = new Rectangle(0, ClientSize.Height - 96, ClientSize.Width, 96);
+            e.Graphics.FillRectangle(blueBrush, rect);
+        }
 
-        void Form1_CreateBackBuffer(object sender, EventArgs e) {
+            void Form1_CreateBackBuffer(object sender, EventArgs e) {
             if (Backbuffer != null)
                 Backbuffer.Dispose();
 
