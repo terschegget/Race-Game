@@ -21,8 +21,10 @@ namespace Race_Game
             InitializeComponent();
 
             Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
-            
+            Car car2 = new Car(64, -64, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
+
             cars.Add(car1);
+            cars.Add(car2);
 
             this.SetStyle(
             ControlStyles.UserPaint |
@@ -81,10 +83,15 @@ namespace Race_Game
         }
 
         private void timerGameTicks_Tick(object sender, EventArgs e) {
-            foreach (Car car in cars)
+
+            if (cars[0].circlesColliding(cars[0].position.X, cars[0].position.Y, 13, cars[1].position.X, cars[1].position.Y, 13))
             {
-                car.calculateNewPosition();
+                cars[0].bounce();
+                cars[1].bounce();
+                
             }
+                foreach (Car car in cars)
+                    car.calculateNewPosition();
 
             Invalidate();
         }

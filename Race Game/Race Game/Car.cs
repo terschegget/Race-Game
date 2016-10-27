@@ -10,9 +10,9 @@ namespace Race_Game
 {
     class Car
     {
-        private Point position;
+        public Point position;
         private float rotation;
-        private double speed;
+        public double speed;
         private Keys leftKey, rightKey, upKey, downKey;
         private bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
         private String image;
@@ -85,6 +85,11 @@ namespace Race_Game
             emtyTank();
         }
 
+        public void bounce()
+        {
+            speed = -speed;
+        }
+
         private void brake()
         {
             speed = speed - .1;
@@ -94,7 +99,7 @@ namespace Race_Game
             emtyTank();
         }
 
-        private void coast()
+        public void coast()
         {
             if (speed >= .02)
                 speed -= .05;
@@ -138,6 +143,23 @@ namespace Race_Game
             else if (rightPressed)
                 rotateRight();
         }
+
+        public bool circlesColliding(int x1, int y1, int radius1, int x2, int y2, int radius2)
+        {
+            //compare the distance to combined radii
+            int dx = x2 - x1;
+            int dy = y2 - y1;
+            int radii = radius1 + radius2;
+            if ((dx * dx) + (dy * dy) < radii * radii)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         // Calculates the new position for the car
         public void calculateNewPosition()
