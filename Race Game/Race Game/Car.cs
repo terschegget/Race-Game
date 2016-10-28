@@ -139,6 +139,11 @@ namespace Race_Game
                 rotateRight();
         }
 
+        public void drawCar(Graphics g)
+        {
+
+        }
+
         // Calculates the new position for the car
         public void calculateNewPosition()
         {
