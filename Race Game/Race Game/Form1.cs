@@ -14,17 +14,18 @@ namespace Race_Game
     {   
         Bitmap Backbuffer;
         List<Car> cars = new List<Car>();
+        private object b;
 
         public FormRaceGame()
         {
             InitializeComponent();
 
-            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
-            Car car2 = new Car(16, 16, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
+            Car car1 = new Car(32, 32, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
+            Car car2 = new Car(32, 32, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
 
             cars.Add(car1);
             cars.Add(car2);
-
+            
             this.SetStyle(
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint |
@@ -35,8 +36,8 @@ namespace Race_Game
             this.Load += new EventHandler(Form1_CreateBackBuffer);
 
             this.Paint += new PaintEventHandler(Form1_PaintUI);
-            this.Paint += new PaintEventHandler(Form1_PaintCar2);
             this.Paint += new PaintEventHandler(Form1_PaintCar1);
+            this.Paint += new PaintEventHandler(Form1_PaintCar2);
 
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyUp += new KeyEventHandler(Form1_KeyUp);
@@ -81,25 +82,27 @@ namespace Race_Game
 
             Backbuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
         }
-        
+
         void DrawCar1(Graphics g)
         {
             g.TranslateTransform(cars[0].getPosition().X + 16, cars[0].getPosition().Y + 16);
             g.RotateTransform(cars[0].getRotation() * (float)(180.0 / Math.PI) + 90);
-            g.TranslateTransform(-cars[0].getPosition().X - 16, -cars[0].getPosition().Y - 16);
+            g.TranslateTransform(-1 * (cars[0].getPosition().X + 16), -1 * (cars[0].getPosition().Y + 16));
 
             g.DrawImage(cars[0].getImage(), cars[0].getPosition());
+            g.ResetTransform();
         }
 
         void DrawCar2(Graphics g)
         {
             g.TranslateTransform(cars[1].getPosition().X + 16, cars[1].getPosition().Y + 16);
             g.RotateTransform(cars[1].getRotation() * (float)(180.0 / Math.PI) + 90);
-            g.TranslateTransform(-cars[1].getPosition().X - 16, -cars[1].getPosition().Y - 16);
+            g.TranslateTransform(-1 * (cars[1].getPosition().X + 16), -1*(cars[1].getPosition().Y + 16));
 
             g.DrawImage(cars[1].getImage(), cars[1].getPosition());
+            g.ResetTransform();
         }
-
+        
         private void timerGameTicks_Tick(object sender, EventArgs e) {
             foreach (Car car in cars)
             {
