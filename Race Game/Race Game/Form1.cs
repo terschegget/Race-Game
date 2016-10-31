@@ -13,26 +13,30 @@ namespace Race_Game
     public partial class FormRaceGame : Form
     {   
         Bitmap Backbuffer;
-
         List<Car> cars = new List<Car>();
+        private object b;
 
         public FormRaceGame()
         {
             InitializeComponent();
 
-            Car car1 = new Car(16, 16, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
-            
-            cars.Add(car1);
+            Car car1 = new Car(32, 32, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
+            Car car2 = new Car(32, 32, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
 
+            cars.Add(car1);
+            cars.Add(car2);
+            
             this.SetStyle(
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint |
             ControlStyles.DoubleBuffer, true);
+            
 
             this.ResizeEnd += new EventHandler(Form1_CreateBackBuffer);
             this.Load += new EventHandler(Form1_CreateBackBuffer);
+
             this.Paint += new PaintEventHandler(Form1_PaintUI);
-            this.Paint += new PaintEventHandler(Form1_Paint);
+            this.Paint += new PaintEventHandler(Form1_PaintCar);
 
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyUp += new KeyEventHandler(Form1_KeyUp);
@@ -48,13 +52,13 @@ namespace Race_Game
                 car.handleKeyDownEvent(e);
         }
 
-        void Form1_Paint(object sender, PaintEventArgs e) {
+        void Form1_PaintCar(object sender, PaintEventArgs e) {
             if (Backbuffer != null) {
                 e.Graphics.DrawImageUnscaled(Backbuffer, Point.Empty);
             }
-
-            Draw(e.Graphics);
+            DrawCar(e.Graphics);
         }
+
         void Form1_PaintUI(object sender, PaintEventArgs e)
         {
             SolidBrush blueBrush = new SolidBrush(Color.Blue);
@@ -62,24 +66,26 @@ namespace Race_Game
             e.Graphics.FillRectangle(blueBrush, rect);
         }
 
-            void Form1_CreateBackBuffer(object sender, EventArgs e) {
+        void Form1_CreateBackBuffer(object sender, EventArgs e) {
             if (Backbuffer != null)
                 Backbuffer.Dispose();
 
             Backbuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
         }
-        
-        void Draw(Graphics g) {
+
+        void DrawCar(Graphics g)
+        {
             foreach (Car car in cars)
             {
                 g.TranslateTransform(car.getPosition().X + 16, car.getPosition().Y + 16);
                 g.RotateTransform(car.getRotation() * (float)(180.0 / Math.PI) + 90);
-                g.TranslateTransform(-car.getPosition().X - 16, -car.getPosition().Y - 16);
+                g.TranslateTransform(-1 * (car.getPosition().X + 16), -1 * (car.getPosition().Y + 16));
 
                 g.DrawImage(car.getImage(), car.getPosition());
+                g.ResetTransform();
             }
         }
-
+        
         private void timerGameTicks_Tick(object sender, EventArgs e) {
             foreach (Car car in cars)
             {

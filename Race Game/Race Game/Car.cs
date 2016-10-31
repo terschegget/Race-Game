@@ -18,6 +18,7 @@ namespace Race_Game
         private String image;
         private float tank;
 
+        //Constructor
         public Car(int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
         {
             position.X = positionX;
@@ -31,7 +32,7 @@ namespace Race_Game
             this.downKey = downKey;
             this.image = image;
         }
-
+        //Key handlers
         public void handleKeyDownEvent(KeyEventArgs keys)
         {
             if (leftKey == keys.KeyCode)
@@ -55,7 +56,7 @@ namespace Race_Game
             if (downKey == keys.KeyCode)
                 downPressed = false;
         }
-
+        //get functies
         public Point getPosition()
         {
             return position;
@@ -75,7 +76,7 @@ namespace Race_Game
         {
             return speed;
         }
-
+        //laat de auto voor uitrijden
         private void accelerate()
         {
             speed = speed + .1;
@@ -84,7 +85,7 @@ namespace Race_Game
                 speed = 5.0;
             emtyTank();
         }
-
+        // remt en laat de auto achteruit rijden
         private void brake()
         {
             speed = speed - .1;
@@ -93,7 +94,7 @@ namespace Race_Game
                 speed = -2.0;
             emtyTank();
         }
-
+        //laat de auto doorvrijden na dat het omhoog word los gelaten
         private void coast()
         {
             if (speed >= .02)
@@ -103,7 +104,7 @@ namespace Race_Game
             else
                 speed = 0;
         }
-
+        //berekend de in houd van de tank
         private void emtyTank()
         {
             if(speed < 0)
@@ -111,7 +112,7 @@ namespace Race_Game
             if(speed > 0)
                 tank -= (float)Math.Sin(0.1f * Math.PI * speed);
         }
-
+        //laat de auto aneren kant op kan rijden en draien
         private void rotateRight()
         {
             if (speed != 0)
@@ -123,7 +124,7 @@ namespace Race_Game
             if (speed != 0)
                 this.rotation -= .07f;
         }
-
+        //veranderd de snelheid
         private void changeSpeed()
         {
             if (upPressed && tank > 0)
@@ -139,15 +140,15 @@ namespace Race_Game
                 rotateRight();
         }
 
-        // Calculates the new position for the car
+        // Berekend de de nieuwe positie van de auto
         public void calculateNewPosition()
         {
             changeSpeed();
 
             Console.WriteLine(tank);
 
-            position.X += (int)Math.Round(speed * Math.Cos(rotation)); //pure magic here!
-            position.Y += (int)Math.Round(speed * Math.Sin(rotation)); //more magic here
+            position.X += (int)Math.Round(speed * Math.Cos(rotation));
+            position.Y += (int)Math.Round(speed * Math.Sin(rotation)); 
         }
     }
 }
