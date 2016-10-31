@@ -16,6 +16,8 @@ namespace Race_Game
         List<Car> cars = new List<Car>();
         private object b;
 
+        Bitmap trackFinish = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/start.png"));
+
         public FormRaceGame()
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace Race_Game
             this.Load += new EventHandler(Form1_CreateBackBuffer);
 
             this.Paint += new PaintEventHandler(Form1_PaintUI);
+            this.Paint += new PaintEventHandler(Form1_PaintTrack);
             this.Paint += new PaintEventHandler(Form1_PaintCar);
 
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
@@ -64,6 +67,11 @@ namespace Race_Game
             SolidBrush blueBrush = new SolidBrush(Color.Blue);
             Rectangle rect = new Rectangle(0, ClientSize.Height - 96, ClientSize.Width, 96);
             e.Graphics.FillRectangle(blueBrush, rect);
+        }
+
+        void Form1_PaintTrack(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(trackFinish, 300, 300);
         }
 
         void Form1_CreateBackBuffer(object sender, EventArgs e) {
