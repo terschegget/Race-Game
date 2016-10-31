@@ -81,8 +81,8 @@ namespace Race_Game
         {
             speed = speed + .1;
 
-            if (speed >= 5.0)
-                speed = 5.0;
+            if (speed >= 3.0)
+                speed = 3.0;
             emtyTank();
         }
         // remt en laat de auto achteruit rijden
@@ -90,8 +90,8 @@ namespace Race_Game
         {
             speed = speed - .1;
 
-            if (speed <= -2.0)
-                speed = -2.0;
+            if (speed <= -1.0)
+                speed = -1.0;
             emtyTank();
         }
         //laat de auto doorvrijden na dat het omhoog word los gelaten

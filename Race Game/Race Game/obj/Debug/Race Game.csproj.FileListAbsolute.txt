@@ -41,14 +41,15 @@ C:\Users\dion\Desktop\Huiswerk\RaceGame\Race-Game\Race Game\Race Game\obj\Debug\
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe.config
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.exe
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.pdb
-C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\blueCar.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pijl_2.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pijl.png
-C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redCar.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.pdb
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csprojResolveAssemblyReference.cache
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.FormRaceGame.resources
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.Properties.Resources.resources
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csproj.GenerateResource.Cache
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bluecar2.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redcar2.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\baanrechtgoeie.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\start.png

@@ -18,14 +18,15 @@ namespace Race_Game
 
         Bitmap trackFinish = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/start.png"));
         Bitmap trackStraight = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/baanrechtgoeie.png"));
+        Bitmap trackStraight2 = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/baanrechtgoeie.png"));
 
-
+        
         public FormRaceGame()
         {
             InitializeComponent();
 
-            Car car1 = new Car(32, 32, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
-            Car car2 = new Car(32, 32, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
+            Car car1 = new Car(32, 32, 0, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "bluecar2.png");
+            Car car2 = new Car(32, 32, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redcar2.png");
 
             cars.Add(car1);
             cars.Add(car2);
@@ -73,10 +74,11 @@ namespace Race_Game
 
         void Form1_PaintTrack(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(trackFinish, ClientSize.Width/2 - 128, ClientSize.Height - 352);
-            e.Graphics.DrawImage(trackStraight, ClientSize.Width / 2 - 384, ClientSize.Height - 352);
+            e.Graphics.DrawImage(trackFinish, ClientSize.Width/2 - 64, ClientSize.Height - 352);
+            e.Graphics.DrawImage(trackStraight, ClientSize.Width / 2 - 188, ClientSize.Height - 352);
+            e.Graphics.DrawImage(trackStraight2, ClientSize.Width / 2 - 256, ClientSize.Height - 352);
         }
-
+        
         void Form1_CreateBackBuffer(object sender, EventArgs e) {
             if (Backbuffer != null)
                 Backbuffer.Dispose();

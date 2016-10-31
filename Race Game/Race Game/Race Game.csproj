@@ -88,7 +88,7 @@
     <Content Include="resources\sprites\baanrechtgoeie.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\blueCar.png">
+    <Content Include="resources\sprites\bluecar2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\sprites\pijl_2.png">
@@ -97,10 +97,12 @@
     <Content Include="resources\sprites\pijl.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\redCar.png">
+    <Content Include="resources\sprites\redcar2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\start.png" />
+    <Content Include="resources\sprites\start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
