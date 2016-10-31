@@ -17,6 +17,8 @@ namespace Race_Game
         private object b;
 
         Bitmap trackFinish = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/start.png"));
+        Bitmap trackStraight = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/baanrechtgoeie.png"));
+
 
         public FormRaceGame()
         {
@@ -71,7 +73,8 @@ namespace Race_Game
 
         void Form1_PaintTrack(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(trackFinish, 300, 300);
+            e.Graphics.DrawImage(trackFinish, ClientSize.Width/2 - 128, ClientSize.Height - 352);
+            e.Graphics.DrawImage(trackStraight, ClientSize.Width / 2 - 384, ClientSize.Height - 352);
         }
 
         void Form1_CreateBackBuffer(object sender, EventArgs e) {
