@@ -89,9 +89,39 @@ namespace Race_Game
 
         void Form1_PaintUI(object sender, PaintEventArgs e)
         {
-            SolidBrush blueBrush = new SolidBrush(Color.Blue);
+            int car1 = Convert.ToInt16(cars[0].getSpeed());
+            int car2 = Convert.ToInt16(cars[1].getSpeed());
+            Pen rectPen = new Pen(Color.Gray, 2);
+            Pen circlePen = new Pen(Color.Gray, 3);
             Rectangle rect = new Rectangle(0, ClientSize.Height - 96, ClientSize.Width, 96);
-            e.Graphics.FillRectangle(blueBrush, rect);
+            e.Graphics.DrawRectangle(rectPen, rect);
+            e.Graphics.DrawPie(circlePen, -100, ClientSize.Height - 96, 200, 192, 180, 180);
+            e.Graphics.DrawPie(circlePen, ClientSize.Width - 100, ClientSize.Height - 96, 200, 192, 180, 180);
+            e.Graphics.DrawPie(circlePen, 100, ClientSize.Height - 96, 150, 192, 0, -180);
+            e.Graphics.DrawPie(circlePen, ClientSize.Width - 250, ClientSize.Height - 96, 150, 192, 0, -180);
+            using (Font font1 = new Font("Times New Roman", 24, FontStyle.Bold, GraphicsUnit.Pixel))
+            {
+                PointF pointF1 = new PointF(30, 10);
+                PointF pointF2 = new PointF(30, 30);
+                e.Graphics.DrawString(Convert.ToString(Convert.ToInt16(cars[0].getTank())), font1, Brushes.Blue, pointF1);
+                e.Graphics.DrawString(Convert.ToString(Convert.ToInt16(cars[0].getSpeed())), font1, Brushes.Blue, pointF2);
+            }
+            e.Graphics.DrawImage(new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/blueArrow.png")), 100, 100, 32, 32);
+
+            
+        }
+        double getSpeedRotation(Car car)
+        {
+            //0 - 90
+            double rotationSpeed = 17 * car.getSpeed();
+            return rotationSpeed;
+        }
+
+        double getTankRotation(Car car)
+        {
+            // 0-1000
+            double rotationTank = 0.1 * car.getTank();
+            return rotationTank;
         }
 
         void Form1_PaintTrack(object sender, PaintEventArgs e)

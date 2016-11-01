@@ -76,6 +76,11 @@ namespace Race_Game
         {
             return speed;
         }
+
+        public float getTank()
+        {
+            return tank;
+        }
         //laat de auto voor uitrijden
         private void accelerate()
         {
