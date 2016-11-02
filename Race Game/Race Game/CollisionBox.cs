@@ -17,8 +17,10 @@ namespace Race_Game
         private double rotation;
         private double deltaRotation;
         public Point objectPosition;
+        public Point deltaObjectPosition;
+        private Vector2D rotationPoint;
 
-        /*ilustratie van de assen en de hoeken
+        /*illustratie van de assen en de hoeken
          *              ^
          *       axis 2 |
          *              |
@@ -36,7 +38,7 @@ namespace Race_Game
         Vector2D pointDownLeft = new Vector2D(0, 0);
         Vector2D pointDownRight = new Vector2D(0, 0);
 
-        public CollisionBox(Size sizeBox ,int width, int height, double rotation, Point position) 
+        public CollisionBox(Size sizeBox ,int width, int height, double rotation, Point position, Vector2D rotationPoint) 
         {
             this.objectPosition = position;
             this.objectImageWidth = width;
@@ -44,55 +46,37 @@ namespace Race_Game
             this.rotation = rotation;
             this.objectWidth = sizeBox.Width;
             this.objectHeight = sizeBox.Height;
+            this.rotationPoint = rotationPoint;
 
-            pointUpRight.X += objectPosition.X + objectImageWidth / 2;
+            pointUpRight.X += objectPosition.X + objectWidth + (objectImageWidth - objectWidth) / 2;
             pointUpRight.Y += objectPosition.Y + (objectImageHeight - objectHeight) / 2;
-            pointUpLeft.X += objectPosition.X - objectWidth + objectImageWidth / 2;
+            pointUpLeft.X += objectPosition.X + (objectImageWidth - objectWidth) / 2;
             pointUpLeft.Y += objectPosition.Y + (objectImageHeight - objectHeight) / 2;
-            pointDownLeft.X += objectPosition.X - objectWidth + objectImageWidth / 2;
+            pointDownLeft.X += objectPosition.X + (objectImageWidth - objectWidth) / 2;
             pointDownLeft.Y += objectPosition.Y + objectHeight + (objectImageHeight - objectHeight) / 2;
-            pointDownRight.X += objectPosition.X + objectImageWidth / 2;
+            pointDownRight.X += objectPosition.X + objectWidth + (objectImageWidth - objectWidth) / 2;
             pointDownRight.Y += objectPosition.Y + objectHeight + (objectImageHeight - objectHeight) / 2;
         }
 
         public void calculateBox()
         {
-
-            double r = Math.Sqrt(objectHeight/2 * objectHeight/2 + objectWidth/2 * objectWidth/2);
-
             //het berekenen van de hoekken met de rotatities
-            /*
-            pointUpRight.X = Math.Sin(rotation) * d;
-            pointUpRight.Y = Math.Cos(rotation) * d;
-            pointUpLeft.X = -Math.Sin(rotation) * d;
-            pointUpLeft.Y = Math.Cos(rotation) * d;
-            pointDownLeft.X = -Math.Sin(rotation) * d;
-            pointDownLeft.Y = -Math.Cos(rotation) * d;
-            pointDownRight.X = Math.Sin(rotation) * d;
-            pointDownRight.Y = -Math.Cos(rotation) * d;
-            */
-            calculateNewPosition(pointUpRight, rotation);
-            calculateNewPosition(pointUpLeft, rotation);
-            calculateNewPosition(pointDownLeft, rotation);
-            calculateNewPosition(pointDownRight, rotation);
-            
-            //het zetten van de posities van de x en y coordinaten van de hoeken door 
-            /*
-            pointUpRight.X += objectPosition.X + objectImageWidth / 2;
-            pointUpRight.Y += objectPosition.Y + (objectImageHeight - objectHeight) / 2;
-            pointUpLeft.X += objectPosition.X - objectWidth + objectImageWidth / 2;
-            pointUpLeft.Y += objectPosition.Y + (objectImageHeight - objectHeight) / 2;
-            pointDownLeft.X += objectPosition.X - objectWidth + objectImageWidth / 2;
-            pointDownLeft.Y += objectPosition.Y + objectHeight + (objectImageHeight - objectHeight) / 2;
-            pointDownRight.X += objectPosition.X + objectImageWidth / 2;
-            pointDownRight.Y += objectPosition.Y + objectHeight + (objectImageHeight - objectHeight) / 2;
-            */
+            calculateNewPosition(pointUpRight, deltaRotation);
+            calculateNewPosition(pointUpLeft, deltaRotation);
+            calculateNewPosition(pointDownLeft, deltaRotation);
+            calculateNewPosition(pointDownRight, deltaRotation);
         }
 
         private void calculateNewPosition(Vector2D position, double angle)
         {
-            position.X = position.X * Math.Cos(angle) + position.Y * Math.Sin(angle);
-            position.Y = position.X * Math.Sin(angle) - position.Y * Math.Cos(angle);
+            double tempX = position.X - (objectPosition.X + rotationPoint.X);
+            double tempY = position.Y - (objectPosition.Y + rotationPoint.Y);
+
+            double deltaX = tempX * Math.Cos(angle) - tempY * Math.Sin(angle);
+            double deltaY = tempX * Math.Sin(angle) + tempY * Math.Cos(angle);
+
+            position.X = deltaX + objectPosition.X + (deltaObjectPosition.X + rotationPoint.X);
+            position.Y = deltaY + objectPosition.Y + (deltaObjectPosition.Y + rotationPoint.Y);
         }
 
         public Vector2D getUR()
@@ -117,6 +101,8 @@ namespace Race_Game
 
         public void addPosition(Point newPost)
         {
+            deltaObjectPosition.X = newPost.X - objectPosition.X;
+            deltaObjectPosition.Y = newPost.Y - objectPosition.Y;
             objectPosition = newPost;
         }
 
@@ -124,7 +110,7 @@ namespace Race_Game
         {
             double old = rotation;
             rotation = newRotation;
-            deltaRotation = rotation = old;
+            deltaRotation = rotation - old;
         }
 
     }

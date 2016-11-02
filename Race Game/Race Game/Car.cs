@@ -11,6 +11,7 @@ namespace Race_Game
     class Car
     {
         public Point position;
+        public Vector2D rotationPoint;
         private float rotation;
         public double speed;
         private Keys leftKey, rightKey, upKey, downKey;
@@ -21,7 +22,7 @@ namespace Race_Game
 
         private CollisionBox boxCollider;
 
-        public Car(int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
+        public Car(int positionX, int positionY, float rotation, Vector2D rotationPoint, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
         {
             position.X = positionX;
             position.Y = positionY;
@@ -33,7 +34,8 @@ namespace Race_Game
             this.upKey = upKey;
             this.downKey = downKey;
             this.image = image;
-            boxCollider = new CollisionBox(new Size(56, 26) ,getImage().Width, getImage().Height, 0, position);
+            boxCollider = new CollisionBox(new Size(56, 26) ,getImage().Width, getImage().Height, 0, position, rotationPoint);
+            this.rotationPoint = rotationPoint;
 
         }
 
@@ -98,11 +100,6 @@ namespace Race_Game
         public void bounce()
         {
             speed = -speed;
-        }
-
-        public void stop()
-        {
-            speed =- speed + 1;
         }
 
         private void brake()
@@ -189,10 +186,10 @@ namespace Race_Game
             boxCollider.addPosition(position);
             boxCollider.addRoation(rotation);
             boxCollider.calculateBox();
-            /*
+            
             position.X += (int)Math.Round(speed * Math.Cos(rotation)); //pure magic here!
             position.Y += (int)Math.Round(speed * Math.Sin(rotation)); //more magic here
-            */
+
         }
     }
 }

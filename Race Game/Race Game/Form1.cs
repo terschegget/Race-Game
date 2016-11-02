@@ -20,8 +20,8 @@ namespace Race_Game
         {
             InitializeComponent();
 
-            Car car1 = new Car(500, 200, 0, 0, 100000000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
-            Car car2 = new Car(64, 512, 0, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
+            Car car1 = new Car(500, 200, 0, new Vector2D(32, 32), 0, 100000000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "blueCar.png");
+            Car car2 = new Car(64, 512, 0, new Vector2D(32, 32), 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redCar.png");
 
             cars.Add(car1);
             cars.Add(car2);
@@ -69,12 +69,10 @@ namespace Race_Game
 
             foreach (Car car in cars)
             {
-                g.TranslateTransform(car.getPosition().X + 31.5f, car.getPosition().Y + 31.5f);
+                g.TranslateTransform(car.getPosition().X + (int)car.rotationPoint.X, car.getPosition().Y + (int)car.rotationPoint.Y);
                 g.RotateTransform(car.getRotation() * (float)(180.0 / Math.PI) + 90);
-                g.TranslateTransform(-car.getPosition().X - 31.5f, -car.getPosition().Y - 31/5f);
-
-                g.FillRectangle(aBrush, car.getPosition().X, car.getPosition().Y, 4, 4);
-
+                g.TranslateTransform(-car.getPosition().X - 31.5f, -car.getPosition().Y - 31.5f);
+                
                 g.DrawImage(car.getImage(), car.getPosition());
 
                 g.ResetTransform();
@@ -154,12 +152,10 @@ namespace Race_Game
 
             if (obj1Max < obj2Min)
             {
-                Console.Write( obj1Max + " < " + obj2Min);
                 return false;
             }
             else if (obj1Min > obj2Max)
             {
-                Console.Write(obj1Min + " > " + obj2Max);
                 return false;
             }
             else
@@ -201,18 +197,14 @@ namespace Race_Game
             
             if (checkCollision(cars[0].getCollider(), cars[1].getCollider()))
             {
-                cars[0].isColliding = true;
-                cars[0].bounce();
-                cars[1].isColliding = true;
-                cars[1].bounce();
-                System.Threading.Thread.Sleep(500);
+                Console.WriteLine("colliding");
+                
             }
             else
             {
-                cars[0].isColliding = false;
-                cars[1].isColliding = false;
+                Console.WriteLine("not colliding");
             }
-
+            
             foreach (Car car in cars)
                 car.calculateNewPosition();
 
