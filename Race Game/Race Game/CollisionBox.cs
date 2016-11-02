@@ -58,7 +58,7 @@ namespace Race_Game
         public void calculateBox()
         {
 
-            double d = Math.Sqrt(objectHeight/2 * objectHeight/2 + objectWidth/2 * objectWidth/2);
+            double r = Math.Sqrt(objectHeight/2 * objectHeight/2 + objectWidth/2 * objectWidth/2);
 
             //het berekenen van de hoekken met de rotatities
             /*
@@ -71,10 +71,10 @@ namespace Race_Game
             pointDownRight.X = Math.Sin(rotation) * d;
             pointDownRight.Y = -Math.Cos(rotation) * d;
             */
-            calculateNewPosition(pointUpRight, deltaRotation);
-            calculateNewPosition(pointUpLeft, deltaRotation);
-            calculateNewPosition(pointDownLeft, deltaRotation);
-            calculateNewPosition(pointDownRight, deltaRotation);
+            calculateNewPosition(pointUpRight, rotation);
+            calculateNewPosition(pointUpLeft, rotation);
+            calculateNewPosition(pointDownLeft, rotation);
+            calculateNewPosition(pointDownRight, rotation);
             
             //het zetten van de posities van de x en y coordinaten van de hoeken door 
             /*
