@@ -11,12 +11,15 @@ namespace Race_Game
     class Car
     {
         private Point position;
-        private float rotation;
+        public float rotation;
         public double speed;
         private Keys leftKey, rightKey, upKey, downKey;
-        private bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
+        public bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
         private String image;
-        private float tank;
+        public float tank;
+        public Boolean accelerating = false;
+        public int nrOfCheckpoints = 0;
+        public int nrOfLaps = 0;
 
         //Constructor
         public Car(int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
@@ -84,6 +87,7 @@ namespace Race_Game
         //laat de auto voor uitrijden
         private void accelerate()
         {
+            accelerating = true;
             speed = speed + .1;
 
             if (speed >= 3.0)
@@ -109,6 +113,11 @@ namespace Race_Game
             else
                 speed = 0;
         }
+
+        public void bounce()
+        {
+            speed = -speed *2;
+        }
         //berekend de in houd van de tank
         private void emtyTank()
         {
@@ -118,13 +127,13 @@ namespace Race_Game
                 tank -= (float)Math.Sin(0.1f * Math.PI * speed);
         }
         //laat de auto aneren kant op kan rijden en draien
-        private void rotateRight()
+        public void rotateRight()
         {
             if (speed != 0)
                 this.rotation += .07f;
         }
 
-        private void rotateLeft()
+        public void rotateLeft()
         {
             if (speed != 0)
                 this.rotation -= .07f;
@@ -136,6 +145,7 @@ namespace Race_Game
                 accelerate();
             else if (downPressed && tank > 0)
                 brake();
+    
             else
                 coast();
 
@@ -145,16 +155,62 @@ namespace Race_Game
                 rotateRight();
         }
 
-        public Boolean onMap(Bitmap track, int x, int y)
+        public Boolean notOnMap(Bitmap track, int x, int y)
         {
             Color color = track.GetPixel(x, y);
-            if ((color.R == 64 && color.G == 64 && color.B == 64) || (color.R == 255 && color.G == 255 && color.B == 255))
+                
+            //Als auto op grijs, wit, zwart of alle checkpoints rijdt
+            if ((color.R == 64 && color.G == 64 && color.B == 64) || (color.R == 255 && color.G == 255 && color.B == 255) || (color.R == 0 && color.G == 0 && color.B == 0) || (color.R == 149 && color.G == 20 && color.B == 255) || (color.R == 25 && color.G == 167 && color.B == 255) || (color.R == 255 && color.G == 240 && color.B == 40))
             {
                 return false;
             }
-            else return true;
+            else return true;   
         }
-        
+
+        public Boolean inPitstop(Bitmap track, int x, int y)
+        {
+            Color color = track.GetPixel(x, y);
+
+            //Als auto op het donkere pitstop hutje rijdt
+            if (color.R == 95 && color.G == 57 && color.B == 32)
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        //Houdt bij hoeveel checkpoints je geraakt hebt en hoeveel rondes gereden
+        public void checkpointsHit(Bitmap track, int x, int y)
+        {
+            Color color = track.GetPixel(x, y);
+
+            if (color.R == 149 && color.G == 20 && color.B == 255 && nrOfCheckpoints == 0)
+            {
+                nrOfCheckpoints = 1;
+                Console.WriteLine(nrOfCheckpoints);
+            }
+
+            if (color.R == 25 && color.G == 167 && color.B == 255 && nrOfCheckpoints == 1)
+            {
+                nrOfCheckpoints = 2;
+                Console.WriteLine(nrOfCheckpoints);
+            }
+
+            if (color.R == 255 && color.G == 240 && color.B == 40 && nrOfCheckpoints == 2)
+            {
+                nrOfCheckpoints = 3;
+                Console.WriteLine(nrOfCheckpoints);
+            }
+
+            if (color.R == 255 && color.G == 255 && color.B == 255 && nrOfCheckpoints == 3)
+            {
+                nrOfLaps += 1;
+                nrOfCheckpoints = 0;
+                Console.WriteLine(nrOfCheckpoints);
+                Console.WriteLine(nrOfLaps);
+            }               
+        }
+
         // Berekend de de nieuwe positie van de auto
         public void calculateNewPosition()
         {

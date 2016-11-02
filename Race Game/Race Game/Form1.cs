@@ -188,15 +188,30 @@ namespace Race_Game
         private void timerGameTicks_Tick(object sender, EventArgs e) {
 
             foreach (Car car in cars)
-            {
-
-                if (car.onMap(fullTrack, car.getPosition().X, car.getPosition().Y))
-                {
-                    car.speed = .6f;
-                }
-
-                Console.Write(car.getPosition());
+            {              
                 car.calculateNewPosition();
+                car.checkpointsHit(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2);
+                //Console.WriteLine(car.tank);
+                try
+                {
+                    if (car.notOnMap(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2))
+                    {
+                        if(car.speed >= 0.6f)
+                        {
+                            car.speed = 0.6f;                        
+                        }  
+                    }
+                    if (car.inPitstop(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2))
+                    {
+                        car.speed = 0.6f;
+                        car.tank = 1000f;
+                    }
+                }
+               
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    car.bounce();
+                }
             }
                        
             Invalidate();

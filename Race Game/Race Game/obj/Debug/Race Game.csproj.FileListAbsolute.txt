@@ -86,3 +86,4 @@ C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht2Rechts.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\red_Arrow.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\fullTrack.png
+C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\fullTrack.png
