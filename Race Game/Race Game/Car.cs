@@ -17,6 +17,9 @@ namespace Race_Game
         private bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
         private String image;
         private float tank;
+        public bool isColliding = false;
+
+        private CollisionBox boxCollider;
 
         public Car(int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
         {
@@ -30,6 +33,8 @@ namespace Race_Game
             this.upKey = upKey;
             this.downKey = downKey;
             this.image = image;
+            boxCollider = new CollisionBox(new Size(56, 26) ,getImage().Width, getImage().Height, 0, position);
+
         }
 
         public void handleKeyDownEvent(KeyEventArgs keys)
@@ -76,6 +81,11 @@ namespace Race_Game
             return speed;
         }
 
+        public CollisionBox getCollider()
+        {
+            return boxCollider;
+        }
+
         private void accelerate()
         {
             speed = speed + .1;
@@ -88,6 +98,11 @@ namespace Race_Game
         public void bounce()
         {
             speed = -speed;
+        }
+
+        public void stop()
+        {
+            speed =- speed + 1;
         }
 
         private void brake()
@@ -120,24 +135,30 @@ namespace Race_Game
         private void rotateRight()
         {
             if (speed != 0)
+            {
                 this.rotation += .07f;
+            }
         }
 
         private void rotateLeft()
         {
             if (speed != 0)
+            {
                 this.rotation -= .07f;
+            }
         }
 
         private void changeSpeed()
         {
-            if (upPressed && tank > 0)
-                accelerate();
-            else if (downPressed && tank > 0)
-                brake();
-            else
-                coast();
-
+            if (!isColliding)
+            {
+                if (upPressed && tank > 0)
+                    accelerate();
+                else if (downPressed && tank > 0)
+                    brake();
+                else
+                    coast();
+            }
             if (leftPressed)
                 rotateLeft();
             else if (rightPressed)
@@ -159,17 +180,19 @@ namespace Race_Game
                 return false;
             }
         }
-
-
+        
         // Calculates the new position for the car
         public void calculateNewPosition()
         {
             changeSpeed();
 
-            Console.WriteLine(tank);
-
+            boxCollider.addPosition(position);
+            boxCollider.addRoation(rotation);
+            boxCollider.calculateBox();
+            /*
             position.X += (int)Math.Round(speed * Math.Cos(rotation)); //pure magic here!
             position.Y += (int)Math.Round(speed * Math.Sin(rotation)); //more magic here
+            */
         }
     }
 }
