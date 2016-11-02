@@ -87,7 +87,6 @@ namespace Race_Game
         //laat de auto voor uitrijden
         private void accelerate()
         {
-            accelerating = true;
             speed = speed + .1;
 
             if (speed >= 3.0)

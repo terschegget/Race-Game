@@ -14,7 +14,6 @@ namespace Race_Game
     {
         Bitmap Backbuffer;
         List<Car> cars = new List<Car>();
-        List<Bitmap> track = new List<Bitmap>();
         private object b;
 
         //Initalizatie van alle stukken van de baan
@@ -55,35 +54,6 @@ namespace Race_Game
 
             cars.Add(car1);
             cars.Add(car2);
-
-            //add all track parts to the list
-            /*
-            track.Add(trackPitsEnter);
-            track.Add(trackPitsExit);
-            track.Add(trackPitstop);
-            track.Add(trackFinish);
-            track.Add(trackPitsCornerRight);
-            track.Add(trackPitsCornerLeft);
-            track.Add(trackStraight1);
-            track.Add(trackStraight2);
-            track.Add(trackStraight3);
-            track.Add(trackCorner1);
-            track.Add(trackCorner2);
-            track.Add(trackCorner3);
-            track.Add(trackCorner4);
-            track.Add(trackCorner5);
-            track.Add(trackCorner6);
-            track.Add(trackCorner7);
-            track.Add(trackCorner8);
-            track.Add(trackCorner9);
-            track.Add(trackCorner10);
-            track.Add(trackStraightUp1);
-            track.Add(trackStraightUp2);
-            track.Add(trackStraightUp3);
-            track.Add(trackStraightUp4);
-            track.Add(trackStraightUp5);
-            track.Add(trackStraightUp6);
-            */
 
             this.SetStyle(
             ControlStyles.UserPaint |
