@@ -12,7 +12,7 @@ namespace Race_Game
     {
         private Point position;
         private float rotation;
-        private double speed;
+        public double speed;
         private Keys leftKey, rightKey, upKey, downKey;
         private bool leftPressed = false, rightPressed = false, upPressed = false, downPressed = false;
         private String image;
@@ -63,6 +63,11 @@ namespace Race_Game
         }
 
         public Image getImage()
+        {
+            return new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/" + image));
+        }
+
+        public Bitmap getBitmap()
         {
             return new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/" + image));
         }
@@ -140,12 +145,20 @@ namespace Race_Game
                 rotateRight();
         }
 
+        public Boolean onMap(Bitmap track, int x, int y)
+        {
+            Color color = track.GetPixel(x, y);
+            if ((color.R == 64 && color.G == 64 && color.B == 64) || (color.R == 255 && color.G == 255 && color.B == 255))
+            {
+                return false;
+            }
+            else return true;
+        }
+        
         // Berekend de de nieuwe positie van de auto
         public void calculateNewPosition()
         {
             changeSpeed();
-
-            Console.WriteLine(tank);
 
             position.X += (int)Math.Round(speed * Math.Cos(rotation));
             position.Y += (int)Math.Round(speed * Math.Sin(rotation)); 

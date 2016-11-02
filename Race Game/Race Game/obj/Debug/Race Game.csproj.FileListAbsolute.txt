@@ -37,8 +37,6 @@ C:\Users\dion\Desktop\Huiswerk\RaceGame\Race-Game\Race Game\Race Game\obj\Debug\
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe.config
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.exe
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.pdb
-C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pijl_2.png
-C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pijl.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.pdb
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csprojResolveAssemblyReference.cache
@@ -47,7 +45,6 @@ C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csproj.GenerateResource.Cache
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bluecar2.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redcar2.png
-C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\baanrechtgoeie.png
 C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\start.png
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bluecar2.png
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redcar2.png
@@ -70,3 +67,22 @@ C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resourc
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht2Rechts.png
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\red_Arrow.png
 C:\Users\Jeroen\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Links2.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\baanRechtBreed.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\baanRechtHoog.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\blue_Arrow.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v1.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v2.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v3.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v4.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v1.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v2.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v3.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v4.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstop.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Links.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Links2.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Rechts.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht2Links.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht2Rechts.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\red_Arrow.png
+C:\Users\Els\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\fullTrack.png
