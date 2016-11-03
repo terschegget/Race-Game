@@ -110,3 +110,40 @@ C:\Users\dion\Desktop\Huiswerk\RaceGame\Race-Game\Race Game\Race Game\bin\Debug\
 C:\Users\dion\Desktop\Huiswerk\RaceGame\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\meterroodgoed.png
 C:\Users\dion\Desktop\Huiswerk\RaceGame\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redArrow.png
 C:\Users\dion\Desktop\Huiswerk\RaceGame\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redArrowS.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe.config
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.exe
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.pdb
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\baanRechtBreed.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\baanRechtHoog.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\startscherm.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\blauwegoede.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\blueArrow.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\blueArrowS.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bluecar2.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v1.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v2.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v3.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht1v4.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v1.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v2.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v3.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\bocht2v4.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\fullTrack.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\meterroodgoed.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstop.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Links.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Links2.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht1Rechts.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht2Links.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\pitstopBocht2Rechts.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redArrow.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redArrowS.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\redcar2.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\start.png
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.exe
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\Race Game.pdb
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csprojResolveAssemblyReference.cache
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.FormRaceGame.resources
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race_Game.Properties.Resources.resources
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\obj\Debug\Race Game.csproj.GenerateResource.Cache
+C:\Users\Tjeerd\Documents\GitHub\Race-Game\Race Game\Race Game\bin\Debug\resources\sprites\controls.png

@@ -92,6 +92,9 @@
     <Content Include="resources\sprites\baanRechtHoog.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\sprites\controls.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\sprites\startscherm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

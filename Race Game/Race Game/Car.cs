@@ -175,7 +175,7 @@ namespace Race_Game
             Color color = track.GetPixel(x, y);
                 
             //Als auto op grijs, wit, zwart of alle checkpoints rijdt
-            if ((color.R == 64 && color.G == 64 && color.B == 64) || (color.R == 255 && color.G == 255 && color.B == 255) || (color.R == 0 && color.G == 0 && color.B == 0) || (color.R == 149 && color.G == 20 && color.B == 255) || (color.R == 25 && color.G == 167 && color.B == 255) || (color.R == 255 && color.G == 240 && color.B == 40))
+            if ((color.R == 64 && color.G == 64 && color.B == 64) || (color.R == 255 && color.G == 255 && color.B == 255) || (color.R == 0 && color.G == 0 && color.B == 0) || (color.R == 149 && color.G == 20 && color.B == 255) || (color.R == 25 && color.G == 167 && color.B == 255) || (color.R == 255 && color.G == 240 && color.B == 40) || (color.R == 165 && color.G == 198 && color.B == 255))
             {
                 return false;
             }

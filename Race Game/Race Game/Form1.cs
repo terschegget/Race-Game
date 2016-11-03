@@ -321,7 +321,7 @@ namespace Race_Game
             this.FormClosed += new FormClosedEventHandler(this.Form3_FormClosed);
             this.Width = 1024;
             this.Height = 768;
-            Image myimage = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/startscherm.png"));
+            Image myimage = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/controls.png"));
             this.BackgroundImage = myimage;
 
             Button btnStart2 = new Button();
