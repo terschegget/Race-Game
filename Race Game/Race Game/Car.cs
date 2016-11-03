@@ -189,25 +189,31 @@ namespace Race_Game
                 Console.WriteLine(nrOfCheckpoints);
             }
 
-            if (color.R == 25 && color.G == 167 && color.B == 255 && nrOfCheckpoints == 1)
+            if (color.R == 165 && color.G == 198 && color.B == 255 && nrOfCheckpoints == 1)
             {
                 nrOfCheckpoints = 2;
                 Console.WriteLine(nrOfCheckpoints);
             }
 
-            if (color.R == 255 && color.G == 240 && color.B == 40 && nrOfCheckpoints == 2)
+            if (color.R == 25 && color.G == 167 && color.B == 255 && nrOfCheckpoints == 2)
             {
                 nrOfCheckpoints = 3;
                 Console.WriteLine(nrOfCheckpoints);
             }
 
-            if (color.R == 255 && color.G == 255 && color.B == 255 && nrOfCheckpoints == 3)
+            if (color.R == 255 && color.G == 240 && color.B == 40 && nrOfCheckpoints == 3)
+            {
+                nrOfCheckpoints = 4;
+                Console.WriteLine(nrOfCheckpoints);
+            }
+
+            if ((color.R == 255 && color.G == 255 && color.B == 255 && nrOfCheckpoints == 4) || (color.R == 95 && color.G == 57 && color.B == 32 && nrOfCheckpoints == 4))
             {
                 nrOfLaps += 1;
                 nrOfCheckpoints = 0;
                 Console.WriteLine(nrOfCheckpoints);
                 Console.WriteLine(nrOfLaps);
-            }               
+            }
         }
 
         // Berekend de de nieuwe positie van de auto
