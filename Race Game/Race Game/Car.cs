@@ -10,6 +10,7 @@ namespace Race_Game
 {
     class Car
     {
+        public int index;
         private Point position;
         public float rotation;
         public double speed;
@@ -21,8 +22,10 @@ namespace Race_Game
         public int nrOfCheckpoints = 0;
         public int nrOfLaps = 0;
 
+        public int countPitstop = 0;
+        
         //Constructor
-        public Car(int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
+        public Car(int index,int positionX, int positionY, float rotation, double speed, float tank, Keys leftKey, Keys rightKey, Keys upKey, Keys downKey, String image)
         {
             position.X = positionX;
             position.Y = positionY;
@@ -34,6 +37,7 @@ namespace Race_Game
             this.upKey = upKey;
             this.downKey = downKey;
             this.image = image;
+            this.index = index;
         }
         //Key handlers
         public void handleKeyDownEvent(KeyEventArgs keys)
@@ -83,6 +87,18 @@ namespace Race_Game
         public double getSpeed()
         {
             return speed;
+        }
+		public float getTank()
+        {
+            return tank;
+        }
+        public int getLaps()
+        {
+            return nrOfLaps;
+        }
+        public void setLaps()
+        {
+             nrOfLaps = 0;
         }
         //laat de auto voor uitrijden
         private void accelerate()
@@ -186,33 +202,27 @@ namespace Race_Game
             if (color.R == 149 && color.G == 20 && color.B == 255 && nrOfCheckpoints == 0)
             {
                 nrOfCheckpoints = 1;
-                Console.WriteLine(nrOfCheckpoints);
             }
 
             if (color.R == 165 && color.G == 198 && color.B == 255 && nrOfCheckpoints == 1)
             {
                 nrOfCheckpoints = 2;
-                Console.WriteLine(nrOfCheckpoints);
             }
 
             if (color.R == 25 && color.G == 167 && color.B == 255 && nrOfCheckpoints == 2)
             {
                 nrOfCheckpoints = 3;
-                Console.WriteLine(nrOfCheckpoints);
             }
 
             if (color.R == 255 && color.G == 240 && color.B == 40 && nrOfCheckpoints == 3)
             {
                 nrOfCheckpoints = 4;
-                Console.WriteLine(nrOfCheckpoints);
             }
 
             if ((color.R == 255 && color.G == 255 && color.B == 255 && nrOfCheckpoints == 4) || (color.R == 95 && color.G == 57 && color.B == 32 && nrOfCheckpoints == 4))
             {
                 nrOfLaps += 1;
                 nrOfCheckpoints = 0;
-                Console.WriteLine(nrOfCheckpoints);
-                Console.WriteLine(nrOfLaps);
             }
         }
 
@@ -220,7 +230,6 @@ namespace Race_Game
         public void calculateNewPosition()
         {
             changeSpeed();
-
             position.X += (int)Math.Round(speed * Math.Cos(rotation));
             position.Y += (int)Math.Round(speed * Math.Sin(rotation)); 
         }

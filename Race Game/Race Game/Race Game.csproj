@@ -92,11 +92,20 @@
     <Content Include="resources\sprites\baanRechtHoog.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="resources\sprites\bloemn.png" />
-    <Content Include="resources\sprites\bluecar2.png">
+    <Content Include="resources\sprites\startscherm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\blue_Arrow.png">
+    <None Include="resources\sprites\bloemn.png" />
+    <Content Include="resources\sprites\blauwegoede.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sprites\blueArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sprites\blueArrowS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sprites\bluecar2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\sprites\bocht1v1.png">
@@ -126,6 +135,9 @@
     <Content Include="resources\sprites\fullTrack.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\sprites\meterroodgoed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\sprites\pitstop.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -144,10 +156,13 @@
     <Content Include="resources\sprites\pitstopBocht2Rechts.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\redcar2.png">
+    <Content Include="resources\sprites\redArrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\sprites\red_Arrow.png">
+    <Content Include="resources\sprites\redArrowS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\sprites\redcar2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\sprites\start.png">

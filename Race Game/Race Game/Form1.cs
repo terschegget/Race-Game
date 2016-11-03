@@ -45,12 +45,17 @@ namespace Race_Game
         Bitmap trackStraightUp5 = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/baanRechtHoog.png"));
         Bitmap trackStraightUp6 = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/baanRechtHoog.png"));
         */
+        Bitmap speedRedArrow = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/redArrow.png"));
+        Bitmap speedBlueArrow = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/blueArrow.png"));
+        Bitmap tankBlueArrow = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/blueArrowS.png"));
+        Bitmap tankRedArrow = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/redArrowS.png"));
         public FormRaceGame()
         {
             InitializeComponent();
+            this.FormClosed += new FormClosedEventHandler(this.Form1_FormClosed);
 
-            Car car1 = new Car(ClientSize.Width / 2, ClientSize.Height - 190, 135, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "bluecar2.png");
-            Car car2 = new Car(ClientSize.Width / 2, ClientSize.Height - 170, 135, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redcar2.png");
+            Car car1 = new Car(2, ClientSize.Width / 2, ClientSize.Height - 190, 135, 0, 1000, Keys.Left, Keys.Right, Keys.Up, Keys.Down, "bluecar2.png");
+            Car car2 = new Car(1, ClientSize.Width / 2, ClientSize.Height - 170, 135, 0, 1000, Keys.A, Keys.D, Keys.W, Keys.S, "redcar2.png");
 
             cars.Add(car1);
             cars.Add(car2);
@@ -63,9 +68,9 @@ namespace Race_Game
             this.ResizeEnd += new EventHandler(Form1_CreateBackBuffer);
             this.Load += new EventHandler(Form1_CreateBackBuffer);
 
-            this.Paint += new PaintEventHandler(Form1_PaintUI);
             this.Paint += new PaintEventHandler(Form1_PaintTrack);
             this.Paint += new PaintEventHandler(Form1_PaintCar);
+			this.Paint += new PaintEventHandler(Form1_PaintUI);
 
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyUp += new KeyEventHandler(Form1_KeyUp);
@@ -94,9 +99,73 @@ namespace Race_Game
 
         void Form1_PaintUI(object sender, PaintEventArgs e)
         {
-            SolidBrush blueBrush = new SolidBrush(Color.Blue);
-            Rectangle rect = new Rectangle(0, ClientSize.Height - 96, ClientSize.Width, 96);
-            e.Graphics.FillRectangle(blueBrush, rect);
+            int car1 = Convert.ToInt16(cars[0].getSpeed());
+            int car2 = Convert.ToInt16(cars[1].getSpeed());
+
+            e.Graphics.DrawImage(new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/meterroodgoed.png")), 1, ClientSize.Height - 135, 192, 128);
+            e.Graphics.DrawImage(rotationArrowImg(speedRedArrow, (float)getSpeedRotation(cars[1]), 235),50, ClientSize.Height - 85, 32, 32);
+            e.Graphics.DrawImage(new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/blauwegoede.png")), 810, ClientSize.Height-135, 192, 128);
+            e.Graphics.DrawImage(rotationArrowImg(speedBlueArrow, (float)getSpeedRotation(cars[0]),235), 920, ClientSize.Height - 85, 32, 32);
+
+            e.Graphics.DrawImage(rotationArrowImg(tankBlueArrow, (float)getTankRotation(cars[0]),160), 845, ClientSize.Height - 80, 32, 32);
+            e.Graphics.DrawImage(rotationArrowImg(tankRedArrow, -(float)getTankRotation(cars[1]),-160), 130, ClientSize.Height - 80, 32, 32);
+
+            Font drawfont = new Font("Arial", 14);
+            SolidBrush brush = new SolidBrush(Color.Black);
+            e.Graphics.DrawString("Speler 1", drawfont, brush, 350, ClientSize.Height - 92);
+            e.Graphics.DrawString("Speler 2", drawfont, brush, 600, ClientSize.Height - 92);
+            e.Graphics.DrawString("Aantal Rondes : "+ cars[1].getLaps(), drawfont, brush, 350, ClientSize.Height - 72);
+            e.Graphics.DrawString("Aantal Rondes : " + cars[0].getLaps(), drawfont, brush, 600, ClientSize.Height - 72);
+            e.Graphics.DrawString("Aantal Pitstops : " + cars[1].countPitstop, drawfont, brush, 350, ClientSize.Height - 52);
+            e.Graphics.DrawString("Aantal Pitstops : " + cars[0].countPitstop, drawfont, brush, 600, ClientSize.Height - 52);
+
+            // countPitstop
+
+        }
+        double getSpeedRotation(Car car)
+        {
+            //0 - 90
+            double rotationSpeed = 90 * car.getSpeed();
+            if (rotationSpeed < 0)
+            {
+                rotationSpeed = 45;
+            }
+            return rotationSpeed;
+        }
+
+        double getTankRotation(Car car)
+        {
+            //0 - 1000
+            double rotationTank = 0.14 * car.getTank() + 35;
+            return rotationTank;
+        }
+           double getWinner(Car car, int carIndex)
+        {
+            int winner = 0;
+            int laps = car.getLaps();
+            if(laps == 1)
+            {
+                winner = carIndex;
+            }
+            return winner;
+        }
+
+
+        public Bitmap rotationArrowImg(Bitmap b, float angle, int startAngel)
+        {
+
+            
+            Bitmap returnBitmap = new Bitmap(b.Width, b.Height);
+            using (Graphics g = Graphics.FromImage(returnBitmap))
+            {
+               
+                g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
+                g.RotateTransform(startAngel);
+                g.RotateTransform(angle);
+                g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
+                g.DrawImage(b, new Point(0, 0));
+            }
+            return returnBitmap;
         }
 
         void Form1_PaintTrack(object sender, PaintEventArgs e)
@@ -154,16 +223,19 @@ namespace Race_Game
                 g.ResetTransform();
             }
         }
-   
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
         private void timerGameTicks_Tick(object sender, EventArgs e) {
 
             foreach (Car car in cars)
             {              
                 car.calculateNewPosition();
-                car.checkpointsHit(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2);
                 //Console.WriteLine(car.tank);
                 try
                 {
+                    car.checkpointsHit(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2);
                     if (car.notOnMap(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2))
                     {
                         if(car.speed >= 0.6f)
@@ -173,8 +245,12 @@ namespace Race_Game
                     }
                     if (car.inPitstop(fullTrack, car.getPosition().X + car.getBitmap().Width / 2, car.getPosition().Y + car.getBitmap().Height / 2))
                     {
-                        car.speed = 0.6f;
-                        car.tank = 1000f;
+                        if (car.tank < 800)
+                        {
+                            car.speed = 0.6f;
+                            car.tank = 1000f;
+                            car.countPitstop++;
+                        }
                     }
                 }
                
@@ -183,8 +259,98 @@ namespace Race_Game
                     car.bounce();
                 }
             }
-                       
+
             Invalidate();
+        }
+    }
+	public partial class formStart : Form
+    {
+        public formStart()
+        {
+            this.FormClosed += new FormClosedEventHandler(this.Form2_FormClosed);
+            this.Width = 1024;
+            this.Height = 768;
+            Image myimage = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/startscherm.png"));
+            this.BackgroundImage = myimage;
+
+            Button btnStart = new Button();
+            btnStart.Location = new Point(200, 600);
+            btnStart.Text = "Start Game";
+            btnStart.Width = 125;
+            btnStart.Height = 75;
+            btnStart.Click += new EventHandler(btnStart_Click);
+            this.Controls.Add(btnStart);
+
+            Button btnControls = new Button();
+            btnControls.Location = new Point(470, 600);
+            btnControls.Text = "Controls";
+            btnControls.Width = 125;
+            btnControls.Height = 75;
+            btnControls.Click += new EventHandler(btnControls_Click);
+            this.Controls.Add(btnControls);
+
+            Button btnQuit = new Button();
+            btnQuit.Location = new Point(740, 600);
+            btnQuit.Text = "Quit Game";
+            btnQuit.Width = 125;
+            btnQuit.Height = 75;
+            btnQuit.Click += new EventHandler(btnQuit_Click);
+            this.Controls.Add(btnQuit);
+        }
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            (new FormRaceGame()).Show();this.Hide();
+        }
+        private void btnControls_Click(object sender, EventArgs e)
+        {
+            (new formControls()).Show(); this.Hide();
+        }
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+    }
+    public partial class formControls : Form
+    {
+        public formControls()
+        {
+            this.FormClosed += new FormClosedEventHandler(this.Form3_FormClosed);
+            this.Width = 1024;
+            this.Height = 768;
+            Image myimage = new Bitmap(Path.Combine(Environment.CurrentDirectory, "resources/sprites/startscherm.png"));
+            this.BackgroundImage = myimage;
+
+            Button btnStart2 = new Button();
+            btnStart2.Location = new Point(312, 600);
+            btnStart2.Text = "Start Game";
+            btnStart2.Width = 125;
+            btnStart2.Height = 75;
+            btnStart2.Click += new EventHandler(btnStart2_Click);
+            this.Controls.Add(btnStart2);
+
+            Button btnControls2 = new Button();
+            btnControls2.Location = new Point(612, 600);
+            btnControls2.Text = "Quit Game";
+            btnControls2.Width = 125;
+            btnControls2.Height = 75;
+            btnControls2.Click += new EventHandler(btnControls2_Click);
+            this.Controls.Add(btnControls2);
+        }
+        private void btnStart2_Click(object sender, EventArgs e)
+        {
+            (new FormRaceGame()).Show(); this.Hide();
+        }
+        private void btnControls2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
